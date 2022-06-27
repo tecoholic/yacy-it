@@ -1,0 +1,23 @@
+{
+
+  "manifest_version": 2,
+  "name": "YACY it",
+  "version": "1.0",
+  "description": "Adds the current webpage to the local YACY index.",
+  "icons": {
+    "48": "icons/index.png"
+  },
+  "permissions": [
+      "activeTab",
+      "https://localhost:8090/*"
+  ],
+  "browser_action": {
+      "default_icon": "icons/index.png",
+      "default_title": "YACY it"
+  },
+  "background": {
+      "scripts": ["background-script.js"],
+      "persistent": false
+  }
+}
+
