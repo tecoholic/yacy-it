@@ -1,23 +1,27 @@
 {
-
   "manifest_version": 2,
   "name": "YACY it",
-  "version": "1.0",
+  "version": "1.2",
   "description": "Adds the current webpage to the local YACY index.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "yacy-it@tecoholic.github.in",
+      "strict_min_version": "42.0"
+    }
+  },
   "icons": {
     "48": "icons/index.png"
   },
-  "permissions": [
-      "activeTab",
-      "https://localhost:8090/*"
-  ],
-  "browser_action": {
-      "default_icon": "icons/index.png",
-      "default_title": "YACY it"
+  "permissions": ["activeTab", "*://localhost:8090/*"],
+  "page_action": {
+    "browser_style": true,
+    "default_icon": "icons/web-plus.svg",
+    "default_title": "YaCy it",
+    "default_popup": "popup/choose_depth.html",
+    "show_matches": ["<all_urls>"]
   },
   "background": {
-      "scripts": ["background-script.js"],
-      "persistent": false
+    "scripts": ["background-script.js"],
+    "persistent": false
   }
 }
-

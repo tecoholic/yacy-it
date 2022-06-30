@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>YaCy it - Choose Depth</title>
+    <style>
+      main {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* CSS */
+      .button-38 {
+        background-color: #ffffff;
+        border: 0;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        color: #111827;
+        font-family: "Inter var", ui-sans-serif, system-ui, -apple-system,
+          system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.25rem;
+        padding: 0.75rem 1rem;
+        text-align: center;
+        text-decoration: none #d1d5db solid;
+        text-decoration-thickness: auto;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        margin: 0.5rem;
+      }
+
+      .button-38:hover {
+        background-color: rgb(249, 250, 251);
+      }
+
+      .button-38:focus {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+
+      .button-38:focus-visible {
+        box-shadow: none;
+      }
+      .title {
+        padding-bottom: 0.5rem;
+        font-size: 14px;
+        font-weight: 800;
+        text-align: center;
+        border-bottom: 1px solid gainsboro;
+      }
+      #alert {
+        flex-direction: row;
+        padding: 1rem;
+        background-color: #fff9c4;
+        display: none;
+      }
+      .icon img {
+        height: 1rem;
+        width: 1rem;
+        margin-right: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">YaCy it</h1>
+    </header>
+    <main>
+      <button id="level-0-btn" class="button-38">Just this page</button>
+      <button id="level-1-btn" class="button-38">
+        This page and all its links
+      </button>
+      <div id="alert">
+        <div class="icon">
+          <img src="/icons/bell-ring.svg" />
+        </div>
+        <div id="notification" class=""></div>
+      </div>
+
+      <script src="/popup/choose_depth.js"></script>
+    </main>
+  </body>
+</html>
