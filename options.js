@@ -1,20 +1,13 @@
 
 function saveOptions(e) {
-    browser.storage.sync.set({
+    browser.storage.local.set({
         server: document.querySelector("#server").value
     });
     e.preventDefault();
 }
 
 function restoreOptions() {
-    /*
-    var storageItem = browser.storage.managed.get('server');
-    storageItem.then((res) => {
-        document.querySelector("#-colour").innerText = res.colour;
-    });
-    */
-
-    var gettingItem = browser.storage.sync.get('server');
+    var gettingItem = browser.storage.local.get('server');
     gettingItem.then((res) => {
         document.querySelector("#server").value = res.server || 'localhost:8090';
     });

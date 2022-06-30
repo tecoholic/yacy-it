@@ -12,7 +12,7 @@ function addToIndex(depth) {
 }
 
 function addTabToIndex(tab, depth) {
-    var gettingItem = browser.storage.sync.get('server');
+    var gettingItem = browser.storage.local.get('server');
     const params = {
         crawlingMode: "url",
         crawlingURL: tab.url,
