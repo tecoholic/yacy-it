@@ -12,38 +12,62 @@ function addToIndex(depth) {
 }
 
 function addTabToIndex(tab, depth) {
-    let params = {
-        url: tab.url,
-        title: tab.title,
-        crawlingDepth: depth || 0,
-        localIndexing: "on",
-        xdstopw: "on",
+    var gettingItem = browser.storage.sync.get('server');
+    const params = {
+        crawlingMode: "url",
+        crawlingURL: tab.url,
+        bookmarkTitle: tab.title,
+        sitemapURL: "",
+        crawlingDepth: depth,
+        range: "domain",
+        deleteold: "on",
+        mustnotmatch: "",
+        crawlingDomFilterCheck: "off",
+        crawlingDomMaxCheck: "on",
+        crawlingDomMaxPages: 1,
+        collection: "user",
+        directDocByURL: "off",
+        recrawl: "reload",
+        reloadIfOlderNumber: 3,
+        reloadIfOlderUnit: "day",
+        cleanSearchCache: "off",
+        deleteold: "on",
         storeHTCache: "on",
-        crawlingQ: "off"
-    }
-    let url = "http://localhost:8090/QuickCrawlLink_p.xml?" + new URLSearchParams(params);
-    let notification = document.querySelector("#notification");
-    let alert = document.querySelector("#alert");
+        cachePolicy: "iffresh",
+        crawlingQ: "on",
+        followFrames: "on",
+        obeyHtmlRobotsNoindex: "on",
+        indexText: "on",
+        indexMedia: "on",
+        intention: "",
+        timezoneOffset: new Date().getTimezoneOffset(),
+        crawlingstart: "Start New Crawl",
+    };
+    gettingItem.then(options => {
+        let url = `http://${options.server || 'localhost:8090'}/Crawler_p.html?` + new URLSearchParams(params);
+        let notification = document.querySelector("#notification");
+        let alert = document.querySelector("#alert");
 
-    fetch(url, {
-        method: "GET",
-        // body: formdata,
-        mode: "cors",
-    })
-        .then(res => res.text())
-        .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
-        .then(xmldom => {
-            document.querySelectorAll(".button-38").forEach((btn) => {
-                btn.style.display = "none";
-            });
-            notification.innerText = xmldom.querySelector("status").innerHTML.trim();
-            alert.style.display = "flex";
+        fetch(url, {
+            method: "GET",
+            mode: "cors",
         })
-        .catch(e => {
-            console.error("Failed to index page", e);
-            notification.innerText = e.toString();
-            alert.style.display = "flex";
-        });
+            .then(res => {
+                document.querySelectorAll(".button-38").forEach((btn) => {
+                    btn.style.display = "none";
+                });
+                notification.innerText = "Page has been added to YaCy Crawler."
+                alert.style.display = "flex";
+                if (res.status != 200) {
+                    notification.innerText += " Status: " + res.status;
+                }
+            })
+            .catch(e => {
+                console.error("Failed to index page", e);
+                notification.innerText = e.toString();
+                alert.style.display = "flex";
+            });
+    });
 }
 
 function onError(error) {

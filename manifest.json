@@ -1,18 +1,22 @@
 {
   "manifest_version": 2,
   "name": "YACY it",
-  "version": "1.3",
+  "version": "1.4",
   "description": "Adds the current webpage to the local YACY index.",
   "icons": {
     "128": "icons/index.png"
   },
-  "permissions": ["activeTab", "*://localhost:8090/*"],
+  "permissions": ["activeTab", "storage"],
   "page_action": {
     "browser_style": true,
     "default_icon": "icons/web-plus.svg",
     "default_title": "YaCy it",
     "default_popup": "popup/choose_depth.html",
     "show_matches": ["<all_urls>"]
+  },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true
   },
   "background": {
     "scripts": ["background-script.js"],
