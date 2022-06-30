@@ -19,12 +19,12 @@ function addTabToIndex(tab, depth) {
         bookmarkTitle: tab.title,
         sitemapURL: "",
         crawlingDepth: depth,
-        range: "domain",
+        range: "wide",
         deleteold: "on",
         mustnotmatch: "",
         crawlingDomFilterCheck: "off",
         crawlingDomMaxCheck: "on",
-        crawlingDomMaxPages: 1,
+        crawlingDomMaxPages: depth ? 100 : 1,
         collection: "user",
         directDocByURL: "off",
         recrawl: "reload",
@@ -34,7 +34,7 @@ function addTabToIndex(tab, depth) {
         deleteold: "on",
         storeHTCache: "on",
         cachePolicy: "iffresh",
-        crawlingQ: "on",
+        crawlingQ: "off",
         followFrames: "on",
         obeyHtmlRobotsNoindex: "on",
         indexText: "on",
@@ -42,6 +42,7 @@ function addTabToIndex(tab, depth) {
         intention: "",
         timezoneOffset: new Date().getTimezoneOffset(),
         crawlingstart: "Start New Crawl",
+        agentName: "Random Browser",
     };
     gettingItem.then(options => {
         let url = `http://${options.server || 'localhost:8090'}/Crawler_p.html?` + new URLSearchParams(params);
