@@ -36,12 +36,12 @@ function addTabToIndex(tab, depth) {
             document.querySelectorAll(".button-38").forEach((btn) => {
                 btn.style.display = "none";
             });
-            notification.innerHTML = xmldom.querySelector("status").innerHTML.trim();
+            notification.innerText = xmldom.querySelector("status").innerHTML.trim();
             alert.style.display = "flex";
         })
         .catch(e => {
             console.error("Failed to index page", e);
-            notification.innerHTML = e.toString();
+            notification.innerText = e.toString();
             alert.style.display = "flex";
         });
 }
